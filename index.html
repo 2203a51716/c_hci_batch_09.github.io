@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover
+{background-color:#f1f1f1;}
+.dropdown:hover  .dropdown-content{
+display: block;
+}
+li a:hover{
+background-color:#111;
+}
+li a:hover, .dropdown:hover .dropbtn{
+background-color:grey;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+</style>
+</head>
+<body>
+<div class="d-flex flex-column justify-content-center w-100 h-100">
+
+  <div class="d-flex flex-column justify-content-center align-items-center">
+	<H1><img src="data:image/png;base64,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"width="300" height="80"><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEPARTMENT OF CSE & AIML</B></img></H1>
+    
+     <h2 align="center" class="fw-light text-white m-0">TIME TABLES</h2><br><br>
+    <div class="btn-group my-5">
+      <a href="https://codepen-api-export-production.s3.us-west-2.amazonaws.com/zip/PEN/pyBNzX/1578778289271/pure-css-gradient-background-animation.zip" class="btn btn-outline-light" aria-current="page"><i class="fas fa-file-download me-2"></i> </a>
+      <a href="https://codepen.io/P1N2O/full/pyBNzX" class="btn btn-outline-light"><i class="fas fa-expand ms-2"></i></a>
+    </div>
+    <a href="https://manuel.pinto.dev" class="text-decoration-none">
+      <h5 class="fw-light text-white m-0"></h5>
+    </a>
+</div>
+</div>
+<div align="center">
+<div class="dropdown">
+<a class="dropbtn">1 year </a>
+</div>
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">2 year </button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    		    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-A.html" target="_blank">CSE-A</a>
+   		    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-B.html" target="_blank">CSE-B</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-C.html" target="_blank">CSE-C</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-D.html" target="_blank">CSE-D</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-E.html" target="_blank">CSE-E</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-F.html" target="_blank">CSE-F</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-G.html" target="_blank">CSE-G</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-H.html" target="_blank">CSE-H</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-I.html" target="_blank">CSE-I</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-J.html" target="_blank">CSE-J</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-K.html" target="_blank">CSE-K</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-L.html" target="_blank">CSE-L</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-M.html" target="_blank">CSE-M</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-N.html" target="_blank">CSE-N</a>
+                    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2-CSE-O.html" target="_blank">CSE-O</a>
+                    <a href="C:\Users\Sathvika reddy\Downloads\Final Update 2 year Sections TT's\Final Update 2 year Sections TT's\2CSE-AIML-A.html" target="_blank">CSE-AIML-A</a>
+                    <a href="C:\Users\Sathvika reddy\Downloads\Final Update 2 year Sections TT's\Final Update 2 year Sections TT's\2CSE-AIML-B.html" target="_blank">CSE-AILML-B</a>
+                    <a href="C:\Users\Sathvika reddy\Downloads\Final Update 2 year Sections TT's\Final Update 2 year Sections TT's\2CSE-AIML-C.html" target="_blank">CSE-AIML-C</a>
+		    <a href="C:\Users\Sathvika reddy\Downloads\Final Update 2 year Sections TT's\Final Update 2 year Sections TT's\2CSE-AIML-D.html" target="_blank">CSE-AIML-D</a>
+		    <a href="http://sru.42web.io/wp-content/uploads/2023/08/2-CSE-DSCS.html" target="_blank">CSE-DSCS</a>
+                    
+</div>
+</div>
+<div class="dropdown">
+  <a class="dropbtn">3 year </a>
+</div>
+<div class="dropdown">
+<a class="dropbtn">4 year </a>  
+</div>
+</div>
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
